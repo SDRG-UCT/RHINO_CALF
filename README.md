@@ -19,6 +19,10 @@ The following is required to use these tutorials:
 * Host System with Ethernet link to RHINO board's ARM CPU ethernet interface (100 Mbps). Linux recommended.
 * Host System with Xilinx ISE 14.7 installed. Download it [here](http://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/design-tools.html). You will also need a license for programming the RHINO's Xilinx Spartan 6 XC6SLX150T FPGA.
 
+## Setup
+* It is assumed that Xilinx ISE is set up, if not please apply them: 'source $XILINX/../settings64.sh'
+* Please add the bin directory in the repository to your PATH, i.e. `export PATH=$PATH:[Absolute path to RHINO CALF repository]/bin`
+
 ## Crash of Calves
 Each calf covers aspect of functionality for the board. The directory structure of this repository mirrors the calves below. Each calf contains a README.md file which mirrors the corresponding page on the repository wiki.
 

@@ -1,0 +1,57 @@
+#!/bin/bash
+
+#Gordon Inggs
+#December 2015
+
+#RHINO CALF build script
+
+#Created from an example provided by Prof Nachiket Kapre
+#Xilinx Command line tools reference guide: http://www.xilinx.com/support/documentation/sw_manuals/xilinx14_7/devref.pdf
+#XST Reference guide http://www.xilinx.com/support/documentation/sw_manuals/xilinx11/xst_v6s6.pdf
+
+
+if [[ ($# -lt 2) ]]; then
+	echo "project_build [project name] [top VHDL module name]"
+	echo ""
+	echo "The script expects [project_name].vhd, [project_name].ucf and [project_name].sym in the current directory"
+
+else
+	#Creating build directory
+	if [ ! -d "$1_dir" ]; then
+		mkdir $1_dir
+	fi
+
+	#Copying files into build directory
+	cp $1.vhd $1_dir/$1.vhd
+	cp $1.ucf $1_dir/$1.ucf
+	cp $1.sym $1_dir/$1.sym
+
+	#Changing to the build directory 
+	cd $1_dir
+
+	#Creating the synthesis commands
+	echo "run -ifn $1.vhd -ifmt vhdl -bufg 0 -p xc6slx150t-fgg676-3 -top $2 -ofn $1.ngc -opt_mode SPEED -opt_level 2 -ofmt NGC -write_timing_constraints yes" > $1_project.scr
+
+	#Synthesis command
+	xst -ifn $1_project.scr
+
+	#Build command
+	ngdbuild -uc $1.ucf $1.ngc 
+
+	#Map command
+	map -w -u -timing -pr b -o $1.ncd $1.ngd $1.pcf
+
+	#Place and Route command
+	par -ol high -w $1.ncd $1.routed.ncd $1.pcf
+
+	#Bit and bof file generation
+	bitgen -w -g "Binary:Yes" $1.routed.ncd $1.bit $1.pcf
+	mkbof -o $1.bof -s $1.sym -t 5 $1.bin
+
+	#leaving build directory
+	cd -
+
+	#Copying results out
+	cp $1_dir/$1.bof .
+
+fi #Argument check if

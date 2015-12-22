@@ -5,7 +5,16 @@ This tutorial/building block covers the fundementals of programming the RHINO co
 
 
 ## Programming the Xilinx FPGA
-1) Creating the FPGA Design (*.bit)
- 
-1.1) Create a new project in Xilinx ISE with a single VHDL file as the top level entity. Set the target device as XC6SLX150T and the package as FGG676.
-1.2) 
+Follow the following steps:
+
+1) Create the FPGA binary file ([design name].vhd -> [design name].bin). Run the project_build script: `project_build [project name] [top module]`, e.g. in this directory run `project_build blinky blinky`
+
+2) Create the BORPH programming file from ([design name].bin to [design name].bof). This should have already been created in this directory command by the [project_build](../bin/project_build) script.
+
+3) Copy the BORPH file to the RHINO. To copy the design created: `scp [project name].bof root@[RHINO IP address]:/root/` e.g `scp blinky.bof root@[RHINO IP address]:/root/`
+
+4) Log into the RHINO Board. `ssh root@[RHINO IP address]`
+
+5) Set the permissions of the BORPH file so that it can be executed. Use the following command `chmod +x [design name].bof`, e.g. `chmod +x blinky.bof`
+
+6) Run the design: `./[design_name].bof`! e.g. `./blink.bof`
