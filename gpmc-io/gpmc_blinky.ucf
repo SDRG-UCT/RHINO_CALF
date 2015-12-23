@@ -1,0 +1,125 @@
+# Set I/O standard for processor interface pins
+CONFIG VCCAUX=3.3;
+
+
+# Set IO standards for gpmc pins
+# gpmc_a[10..1]
+NET "gpmc_a[1]"  IOSTANDARD = LVCMOS33;
+NET "gpmc_a[2]"  IOSTANDARD = LVCMOS33;
+NET "gpmc_a[3]"  IOSTANDARD = LVCMOS33;
+NET "gpmc_a[4]"  IOSTANDARD = LVCMOS33;
+NET "gpmc_a[5]"  IOSTANDARD = LVCMOS33;
+NET "gpmc_a[6]"  IOSTANDARD = LVCMOS33;
+NET "gpmc_a[7]"  IOSTANDARD = LVCMOS33;
+NET "gpmc_a[8]"  IOSTANDARD = LVCMOS33;
+NET "gpmc_a[9]"  IOSTANDARD = LVCMOS33;
+NET "gpmc_a[10]" IOSTANDARD = LVCMOS33;
+
+# gpmc_d[15..0]
+NET "gpmc_d[0]"  IOSTANDARD = LVCMOS33;
+NET "gpmc_d[1]"  IOSTANDARD = LVCMOS33;
+NET "gpmc_d[2]"  IOSTANDARD = LVCMOS33;
+NET "gpmc_d[3]"  IOSTANDARD = LVCMOS33;
+NET "gpmc_d[4]"  IOSTANDARD = LVCMOS33;
+NET "gpmc_d[5]"  IOSTANDARD = LVCMOS33;
+NET "gpmc_d[6]"  IOSTANDARD = LVCMOS33;
+NET "gpmc_d[7]"  IOSTANDARD = LVCMOS33;
+NET "gpmc_d[8]"  IOSTANDARD = LVCMOS33;
+NET "gpmc_d[9]"  IOSTANDARD = LVCMOS33;
+NET "gpmc_d[10]" IOSTANDARD = LVCMOS33;
+NET "gpmc_d[11]" IOSTANDARD = LVCMOS33;
+NET "gpmc_d[12]" IOSTANDARD = LVCMOS33;
+NET "gpmc_d[13]" IOSTANDARD = LVCMOS33;
+NET "gpmc_d[14]" IOSTANDARD = LVCMOS33;
+NET "gpmc_d[15]" IOSTANDARD = LVCMOS33;
+
+# gpmc_clk
+NET "gpmc_clk_i" IOSTANDARD = LVCMOS33;
+
+# gpmc_n_cs[6..0] - chip select 1-7
+NET "gpmc_n_cs[0]" IOSTANDARD = LVCMOS33;
+NET "gpmc_n_cs[1]" IOSTANDARD = LVCMOS33;
+NET "gpmc_n_cs[2]" IOSTANDARD = LVCMOS33;
+NET "gpmc_n_cs[3]" IOSTANDARD = LVCMOS33;
+NET "gpmc_n_cs[4]" IOSTANDARD = LVCMOS33;
+NET "gpmc_n_cs[5]" IOSTANDARD = LVCMOS33;
+NET "gpmc_n_cs[6]" IOSTANDARD = LVCMOS33;
+
+# gpmc bus control
+NET "gpmc_n_we"      IOSTANDARD = LVCMOS33;
+NET "gpmc_n_oe"      IOSTANDARD = LVCMOS33;
+NET "gpmc_n_adv_ale" IOSTANDARD = LVCMOS33;
+NET "gpmc_n_wp"      IOSTANDARD = LVCMOS33;
+NET "gpmc_busy_0"    IOSTANDARD = LVCMOS33;
+NET "gpmc_busy_1"    IOSTANDARD = LVCMOS33;
+
+# Set location of processor interface pins
+NET "gpmc_a[1]" LOC = N17;
+NET "gpmc_a[2]" LOC = N18;
+NET "gpmc_a[3]" LOC = L23;
+NET "gpmc_a[4]" LOC = L24;
+NET "gpmc_a[5]" LOC = N19;
+NET "gpmc_a[6]" LOC = N20;
+NET "gpmc_a[7]" LOC = N21;
+NET "gpmc_a[8]" LOC = N22;
+NET "gpmc_a[9]" LOC = P17;
+NET "gpmc_a[10]" LOC = P19;
+
+NET "gpmc_d[0]" LOC = N23;
+NET "gpmc_d[1]" LOC = N24;
+NET "gpmc_d[2]" LOC = R18;
+NET "gpmc_d[3]" LOC = R19;
+NET "gpmc_d[4]" LOC = P21;
+NET "gpmc_d[5]" LOC = P22;
+NET "gpmc_d[6]" LOC = R20;
+NET "gpmc_d[7]" LOC = R21;
+NET "gpmc_d[8]" LOC = P24;
+NET "gpmc_d[9]" LOC = P26;
+NET "gpmc_d[10]" LOC = R23;
+NET "gpmc_d[11]" LOC = R24;
+NET "gpmc_d[12]" LOC = T22;
+NET "gpmc_d[13]" LOC = T23;
+NET "gpmc_d[14]" LOC = U23;
+NET "gpmc_d[15]" LOC = R25;
+
+NET "gpmc_clk_i" LOC = R26;
+
+NET "gpmc_n_cs[0]" LOC = V23;
+NET "gpmc_n_cs[1]" LOC = U25;
+NET "gpmc_n_cs[2]" LOC = T24;
+NET "gpmc_n_cs[3]" LOC = T26;
+NET "gpmc_n_cs[4]" LOC = V24;
+NET "gpmc_n_cs[5]" LOC = V26;
+NET "gpmc_n_cs[6]" LOC = W25;
+
+NET "gpmc_n_we" LOC = W26;
+NET "gpmc_n_oe" LOC = AA25;
+NET "gpmc_n_adv_ale" LOC = AA26;
+NET "gpmc_n_wp" LOC = AD24;
+NET "gpmc_busy_0" LOC = AD26;
+NET "gpmc_busy_1" LOC = AB24;
+
+# Set location of LED pins
+NET "led[0]" LOC = Y3;
+NET "led[1]" LOC = Y1;
+NET "led[2]" LOC = W2;
+NET "led[3]" LOC = W1;
+NET "led[4]" LOC = V3;
+NET "led[5]" LOC = V1;
+NET "led[6]" LOC = U2;
+NET "led[7]" LOC = U1;
+
+# Define system clock
+NET "sys_clk_N"     LOC = A14;
+NET "sys_clk_P"     LOC = B14;
+
+# Clock constraints
+NET "gpmc_n_adv_ale" CLOCK_DEDICATED_ROUTE = FALSE;
+
+NET "sys_clk_P" TNM_NET = "TM_sys_clk";
+NET "sys_clk_N" TNM_NET = "TM_sys_clk";
+TIMESPEC "TS_sys_clk" = PERIOD "TM_sys_clk"  10.0  ns HIGH 50 %;
+
+
+
+

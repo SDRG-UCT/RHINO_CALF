@@ -12,6 +12,10 @@ This repository contains contributions from the following:
 
 4) [Lekhobola Tsoeunyane](mailto:lekhobola@gmail.com)
 
+5) [Alan Langman](mailto:alan.langman@gmail.com)
+
+6) [Simon Scott](mailto:sscott.za@gmail.com)
+
 ## Requirements
 The following is required to use these tutorials:
 
@@ -30,12 +34,15 @@ Each calf covers aspect of functionality for the board. The directory structure 
 This calf covers:
 * Compiling code for the ARM CPU
 * Programming the FPGA using the ARM CPU
+
 See the [Programming Calf README](./programming/README.md) for more details.
 
 ### GPMC-IO Calf
 This calf covers:
 * Communicating from the ARM CPU to the FPGA using the General Purpose Memory Controller (GPMC) bus
 * Communicating from the FPGA to the ARM CPU using the GPMC bus.
+
+See the [GPMC Calf README](./gpmc-io/README.md) for more details.
 
 ### Ethernet-IO Calf
 This calf covers:
