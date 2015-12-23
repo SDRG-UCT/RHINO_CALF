@@ -16,10 +16,11 @@ if [[ ($# -lt 2) ]]; then
 	echo "The script expects [project_name].vhd, [project_name].ucf and [project_name].sym in the current directory"
 
 else
-	#Creating build directory
-	if [ ! -d "$1_dir" ]; then
-		mkdir $1_dir
+	#Creating new build directory
+	if [ -d "$1_dir" ]; then
+		rm -rf $1_dir
 	fi
+	mkdir $1_dir
 
 	#Copying files into build directory
 	cp $1.vhd $1_dir/$1.vhd
@@ -32,26 +33,43 @@ else
 	#Creating the synthesis commands
 	echo "run -ifn $1.vhd -ifmt vhdl -bufg 0 -p xc6slx150t-fgg676-3 -top $2 -ofn $1.ngc -opt_mode SPEED -opt_level 2 -ofmt NGC -write_timing_constraints yes" > $1_project.scr
 
+	#Creating log file
+	touch $1.log
+
 	#Synthesis command
-	xst -ifn $1_project.scr
+	echo "Synthesising: xst -ifn $1_project.scr"
+	xst -ifn $1_project.scr >> $1.log
 
 	#Build command
-	ngdbuild -uc $1.ucf $1.ngc 
+	echo "Building: ngdbuild -uc $1.ucf $1.ngc"
+	ngdbuild -uc $1.ucf $1.ngc >> $1.log 
 
 	#Map command
-	map -w -u -timing -pr b -o $1.ncd $1.ngd $1.pcf
+	echo "Mapping: map -w -u -timing -pr b -o $1.ncd $1.ngd $1.pcf"
+	map -w -u -timing -pr b -o $1.ncd $1.ngd $1.pcf >> $1.log 
 
 	#Place and Route command
-	par -ol high -w $1.ncd $1.routed.ncd $1.pcf
+	echo "Place and routing: par -ol high -w $1.ncd $1.routed.ncd $1.pcf"
+	par -ol high -w $1.ncd $1.routed.ncd $1.pcf >> $1.log 
 
 	#Bit and bof file generation
-	bitgen -w -g "Binary:Yes" $1.routed.ncd $1.bit $1.pcf
-	mkbof -o $1.bof -s $1.sym -t 5 $1.bin
+	echo "Generating binaries: bitgen -w -g "Binary:Yes" $1.routed.ncd $1.bit $1.pcf"
+	bitgen -w -g "Binary:Yes" $1.routed.ncd $1.bit $1.pcf >> $1.log 
+
+	echo "Generating bof file: mkbof -o $1.bof -s $1.sym -t 5 $1.bin"
+	mkbof -o $1.bof -s $1.sym -t 5 $1.bin >> $1.log 
+
+	if [ -f "$1.bof" ]; then
+		echo "$1.bof created"
+	else
+		echo "$1.bof not created, see $1.log for details"
+	fi
 
 	#leaving build directory
 	cd -
 
 	#Copying results out
 	cp $1_dir/$1.bof .
+	cp $1_dir/$1.log .
 
 fi #Argument check if
