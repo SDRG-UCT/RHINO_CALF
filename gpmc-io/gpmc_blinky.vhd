@@ -1,6 +1,8 @@
 --Alan Langman, 2011
 --modified by Gordon Inggs, 2015
 
+--https://github.com/brandonhamilton/rhino/tree/master/examples/gpmc_test
+
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;

@@ -43,22 +43,16 @@ e.g. ```./gpmc_blinky.bof```
 
 3) Use `ps -A | grep [design name].bof` to find the process id (pid) of the design. The register files will be in `/proc/[pid of the design]/hw/ioreg/[Symbol Name]`.
 
-e.g. ```
-ps -A | grep gpmc_blinky.bof
+e.g. ```ps -A | grep gpmc_blinky.bof
   677 root     ./gpmc_blinky.bof
 
 ls /proc/677/hw/ioreg/
-VERSION	reg_led	reg_word	reg_file
-```
+VERSION	reg_led	reg_word	reg_file```
 
-4) To write to the files, use `echo -e -n "\x[byte 1]\x[byte 2]..\x[byte n] >> /proc/[design pid]/hw/ioreg/[Symbol name]".
+4) To write to the files, use `echo -e -n "\x[byte 1]\x[byte 2]..\x[byte n] >> /proc/[design pid]/hw/ioreg/[Symbol name]"`.
 
-e.g. ```
-echo -e -n "\x01\x00" >> /proc/683/hw/ioreg/reg_led
-``` 
+e.g. ```echo -e -n "\x01\x00" >> /proc/683/hw/ioreg/reg_led``` 
 
 5) To read from the symbols on the command line, use `cat /proc/[design pid]/hw/ioreg/[Symbol name] > [symbol_name.txt]`. Various terminals will vary in how these symbols are rendered.
 
-e.g. ```
-cat /proc/683/hw/ioreg/VERSION > VERSION.txt
-```
+e.g. ```cat /proc/683/hw/ioreg/VERSION > VERSION.txt```
