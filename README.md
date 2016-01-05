@@ -49,7 +49,11 @@ This calf covers:
 * Communicating from the FPGA to the host system using the 1Gbps Ethernet Interface
 * Communiating from the host system to the FPGA using the 1Gbps Ethernet Interface
 
+See the [Ethernet Calf README](./ethernet-io/README.md) for more details.
+
 ### FMC150-IO Calf
 This calf covers:
-* Using the FMC150 card's Analog-to-Digital Convertor (ADC) to sample analog waveforms
+* Using the FMC150 card's Analog-to-Digital Converter (ADC) to sample analog waveforms
 * Using the FMC150 card's Digital-to-Analog Converter (DAC) to produce analog waveforms
+
+See the [FMC150 Calf README](./fmc150-io/README.md) for more details.
