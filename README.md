@@ -19,7 +19,7 @@ This repository contains contributions from the following:
 ## Requirements
 The following is required to use these tutorials:
 
-* RHINO board running BORPH Linux. See [SDRG BORPH fork](https://github.com/SDRG-UCT/borph_rhino)
+* RHINO board running BORPH Linux. See [SDRG BORPH fork](https://github.com/SDRG-UCT/borph_rhino). See the [Quickstart README](./quickstart/README.md) on how to boot a prepared SD Card image.
 * Host System with Ethernet link to RHINO board's ARM CPU ethernet interface (100 Mbps). Linux recommended.
 * Host System with Xilinx ISE 14.7 installed. Download it [here](http://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/design-tools.html). You will also need a license for programming the RHINO's Xilinx Spartan 6 XC6SLX150T FPGA.
 
