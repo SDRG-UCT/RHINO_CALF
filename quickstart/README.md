@@ -13,8 +13,6 @@ The disk image containted in this directory can be used to boot a RHINO board in
 
 5) The ARM CPU will by default send a DHCP request on the ethernet port. If there is no response, the board defaults to `192.168.0.2`.
 
-6) Either:
- 
-	* The board should be accessible using `ssh root@[board address]`, where the board address should be either the one assigned by DHCP or the default.
+6) The board should be accessible using `ssh root@[board address]`, where the board address should be either the one assigned by DHCP or the default.
 
-	* The board should also be accessible via the serial terminal. Connect to the 3 serial device created (i.e. /dev/ttyUSB2) with a baud of 115200. This can be useful for seeing the IP address assigned by the DHCP server.
+6) The board should also be accessible via the serial terminal. Connect to the 3 serial device created (i.e. /dev/ttyUSB2) with a baud of 115200. This can be useful for seeing the IP address assigned by the DHCP server.
