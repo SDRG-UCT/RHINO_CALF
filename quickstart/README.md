@@ -3,7 +3,7 @@ The disk image containted in this directory can be used to boot a RHINO board in
 
 ## Using the disk image
 
-1) Download the [prepared RHINO BORPH SD card image](add link here).
+1) Download the [prepared RHINO BORPH SD card image](http://rrsg.ee.uct.ac.za/rhino_sdcard.img).
 
 2) Copy the SD Card image to a SD Card that is at least 4GB big: `dd if=[PATH to SD card image]/rhino_sdcard.img of=[SD card device file] bs=1m`. Use `sudo fdisk -l` to find the SD card device file. It should be /dev/sdb or /dev/sdc, etc.
 
