@@ -1,12 +1,12 @@
-.. RHINO documentation master file, created by
-   sphinx-quickstart on Thu Jun 22 11:13:54 2017.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
-Welcome to RHINO's documentation!
-=================================
+RHINO DOCS
+==========
 
 Set of basic tutorials/building blocks for using the RHINO platform and its features.
+
+.. image:: ./images/RHINO_BOARD.png
+  :alt: Image of RHINO Board
+  :scale: 30 %
+  :align: center
 
 .. toctree::
    :maxdepth: 2
