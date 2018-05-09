@@ -16,10 +16,12 @@ Using an NFS eases RHINO development, moving files onto the RHINO is as simple a
 
 Requirements
 ------------
-RHINO <---usb cable--->HOST PC
+RHINO <---usb cable + ethernet cable--->HOST PC
 
 .. todo::
   point to "prepping the rhino/console"
+  for now, look at: `the old docs <https://github.com/SDRG-UCT/RHINO_CALF/tree/documentation/quickstart>`_
+
 
 Host PC
 -------
